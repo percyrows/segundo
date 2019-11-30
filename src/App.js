@@ -10,6 +10,9 @@ import {
 //pages
 
 import TablePage from './pages/table-page'
+import ModalPage from './pages/modal-page'
+import TabsPage from  './pages/tabs-page'
+
 
 
 class App extends Component {
@@ -35,7 +38,7 @@ class App extends Component {
           <Router>
             <nav className="navbar" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <a className="navbar-item" href="https://bulma.io">
+            <a className="navbar-item" href="index.js">
               <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"/>
             </a>
       
@@ -86,10 +89,10 @@ class App extends Component {
                 <TablePage />
               </Route>
               <Route path="/modal" exact>
-                componente de modal
+                <ModalPage />
               </Route>
               <Route path="/tabs" exact>
-                componente de tabs
+                <TabsPage />
               </Route>
             </Switch>
           </Router>  
