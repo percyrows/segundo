@@ -2,10 +2,13 @@ import React, {Component} from 'react'
 import Table from '../components/table'
 import api from '../config/api'
 import {Link} from 'react-router-dom'
+import {toast } from 'react-toastify'
+import LoadingBar from 'react-top-loading-bar'
 
 class TablePage extends Component{
     state ={
-        users: []
+        users: [],
+        loadingBarProgress: 0
     }
 
     componentDidMount = async () =>{
@@ -17,7 +20,6 @@ class TablePage extends Component{
         this.setState({
             users: data
         })
-        console.log(data)
     }
 
     handleDelete = (user) =>{
@@ -28,19 +30,34 @@ class TablePage extends Component{
     users.splice(index, 1)
 
     this.setState({
-        users: users
+        loadingBarProgress: 70
     })
 
+    setTimeout(()=>{
+        this.setState({
+            users,
+            loadingBarProgress:100
+        })
+
+    toast.error("Error Notification !", {
+        position: toast.POSITION.TOP_LEFT
+      })
+    }, 500)
 }
 
 
 
     render(){
         let{
-            users
+            users, loadingBarProgress
         } = this.state
 
         return (<div>
+            <LoadingBar
+            progress={loadingBarProgress}
+            height={3}
+            color="blue"
+            onLoaderFinished={this.onLoaderFinished}/>
             <Table 
             config={
             {              
@@ -61,7 +78,7 @@ class TablePage extends Component{
                     title: 'acciones',
                     formatter: (element) => {
                     return (
-                        <div>
+                        <div className="buttons">
                             <button 
                             onClick={
                                 () => this.handleDelete(element)
