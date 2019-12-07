@@ -13,6 +13,7 @@ import Layout from './components/layout'
 import TablePage from './pages/table-page'
 import ModalPage from './pages/modal-page'
 import TabsPage from  './pages/tabs-page'
+import 'react-toastify/dist/ReactToastify.css'
 
 class App extends Component {
 
