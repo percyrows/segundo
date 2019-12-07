@@ -19,12 +19,8 @@ class App extends Component {
 
   render(){
     return(
-      <div className="container">
-  
           <Router>
-            
             <Layout>
-            
               <Switch>
                 <Route path="/" exact>
                   <TablePage />
@@ -36,12 +32,8 @@ class App extends Component {
                   <TabsPage />
                 </Route>
               </Switch>
-
             </Layout>
-
           </Router>  
-        </div>
-      
     )
   }
 }

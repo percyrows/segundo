@@ -10,9 +10,11 @@ class Layout extends Component{
         return (<div>
             <ToastContainer/>
             <Navbar />
+            <div className="container container-main">
             {
                 this.props.children
             }
+            </div>
         </div>)
     }
 

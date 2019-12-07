@@ -19,11 +19,11 @@ class Navbar extends Component{
           } = this.state
 
         return(
-               <nav className="navbar" role="navigation" aria-label="main navigation">
+               <nav className="navbar is-dark is-fixed-top" role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <a className="navbar-item" href="index.js">
-              <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28"/>
-            </a>
+            <Link className="navbar-item" to="/">
+              <img src='atom-logo-white.png' width="120" height="80"/>
+            </Link>
       
 						<a role="button" 
 						onClick={this.handleMenu}
