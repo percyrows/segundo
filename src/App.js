@@ -1,12 +1,49 @@
 import React, { Component } from 'react';
-import Formularios from'./components/formularios';
 
-const App = () => (
-  <div className="container">
-    <div className="section">
-      <Formularios />
-    </div>
-  </div>
-)
+import {
+  BrowserRouter as Router, //enrutador
+  Switch, // navegacion entre rutas
+  Route, //ruta
+  Link // componente href
+} from 'react-router-dom'
+
+
+import Layout from './components/layout'
+
+import TablePage from './pages/table-page'
+import ModalPage from './pages/modal-page'
+import TabsPage from  './pages/tabs-page'
+
+class App extends Component {
+
+  render(){
+    return(
+      <div className="container">
+  
+          <Router>
+            
+            <Layout>
+            
+              <Switch>
+                <Route path="/" exact>
+                  <TablePage />
+                </Route>
+                <Route path="/modal" exact>
+                  <ModalPage />
+                </Route>
+                <Route path="/tabs" exact>
+                  <TabsPage />
+                </Route>
+              </Switch>
+
+            </Layout>
+
+          </Router>  
+        </div>
+      
+    )
+  }
+}
+
 
 export default App;
