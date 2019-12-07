@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import Table from '../components/table'
 import api from '../config/api'
+import {Link} from 'react-router-dom'
 
 class TablePage extends Component{
     state ={
@@ -42,7 +43,7 @@ class TablePage extends Component{
         return (<div>
             <Table 
             config={
-            {                
+            {              
                 columns:[
                     { name: 'id', title: 'ID'},
                     { name: 'name', title: 'Nombre'},
@@ -55,21 +56,32 @@ class TablePage extends Component{
                     },
 
                     {
-                        name: 'actions',
-                        title: 'acciones',
-                        formatter: (element) => {
-                            return <button 
+                        
+                    name: 'actions',
+                    title: 'acciones',
+                    formatter: (element) => {
+                    return (
+                        <div>
+                            <button 
                             onClick={
                                 () => this.handleDelete(element)
                             }
                             className="button is-danger">
                             Eliminar
                             </button>
-                        }
+
+                    <Link className="button is-link"
+                    to = {`/tabs/ ${element.id}/${element.name} }`}
+                    >
+                    Ver detalle
+                    </Link>
+                        </div>
+                    )
                     }
-                ]
-            }
+                }
+            ]
         }
+    }
         data={users} 
             />
         </div>
